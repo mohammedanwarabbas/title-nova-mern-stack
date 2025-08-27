@@ -4,7 +4,6 @@ import {
   Typography, 
   Grid, 
   Paper,
-  Chip,
   Container
 } from "@mui/material";
 import { motion } from "framer-motion";
@@ -136,7 +135,7 @@ const About: React.FC = () => {
             </Typography>
             
             <Grid container spacing={3} justifyContent={'center'}>
-  {technologies.map((tech, index) => (
+  {technologies.map((tech) => (
     <Grid item xs={6} sm={4} md={3} key={tech.name} sx={{ display: 'flex' }}>
       <motion.div
         variants={itemVariants}

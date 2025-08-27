@@ -295,7 +295,7 @@ const Home: React.FC = () => {
                         <Paper
                             elevation={0}
                             sx={{
-                                p: { xs: 3, sm: 4 },
+                                p: { xs: 1.5, sm: 4 },
                                 background: 'rgba(35, 39, 52, 0.7)',
                                 backdropFilter: 'blur(12px)',
                                 border: '1px solid rgba(255, 255, 255, 0.05)',

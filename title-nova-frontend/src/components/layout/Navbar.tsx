@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <Typography
-            variant="h5"
+            variant="h4"
             fontWeight="bold"
             sx={{
               fontFamily: "'Pacifico', cursive",
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
         {isMobile ? (
           <>
             <IconButton edge="end" color="inherit" onClick={handleMenuOpen}>
-              <MenuIcon />
+              <MenuIcon sx={{ fontSize:'2.5rem'}} />
             </IconButton>
             <Menu
               anchorEl={anchorEl}

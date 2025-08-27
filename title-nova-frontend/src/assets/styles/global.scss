@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+
+/* Neon button */
+.neon-btn {
+  background: transparent !important;
+  color: rgb(255, 146, 4) !important;
+  border: 2px solid rgb(255, 196, 0) !important;
+  border-radius: 12px !important;
+  font-weight: bold !important;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: #000000 !important;
+    background: rgba(255, 146, 4, 0.555) !important;
+    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(223, 173, 11, 0.733),
+      transparent
+    );
+    animation: neon-run 2s linear infinite;
+  }
+}
+
+@keyframes neon-run {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}

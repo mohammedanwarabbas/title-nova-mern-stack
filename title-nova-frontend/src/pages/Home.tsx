@@ -12,7 +12,6 @@ import {
     Card,
     CardContent,
     ThemeProvider,
-    createTheme,
     CssBaseline,
     Container,
     Grid,
@@ -27,8 +26,8 @@ import { setTitle, setLoading, setError } from "../redux/slices/titleSlice";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { API_BASE_URL } from "../../config";
-import { Article, RocketLaunch, ContentCopy, AutoAwesome, Star, ExpandMore, ExpandLess, HighlightOff } from "@mui/icons-material";
+import { API_BASE_URL } from "./../../config"
+import { RocketLaunch, ContentCopy, AutoAwesome, Star, ExpandMore, ExpandLess, HighlightOff } from "@mui/icons-material";
 import { grey } from '@mui/material/colors';
 
 const Home: React.FC = () => {
@@ -97,10 +96,6 @@ const Home: React.FC = () => {
         }
     };
 
-    const truncateText = (text: string, maxLength: number) => {
-        if (text.length <= maxLength) return text;
-        return text.substr(0, maxLength) + '...';
-    };
 
     useEffect(() => {
         if (countdown > 0) {

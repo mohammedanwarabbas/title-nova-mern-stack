@@ -41,6 +41,7 @@ A modern, responsive web application that generates captivating title using AI t
 - **Environment variables** with dotenv
 
 ## 📦 Project Structure
+```
 title-nova/
 ├── title-frontend/ # React frontend application
 │ ├── src/
@@ -58,7 +59,7 @@ title-nova/
 │ └── .env
 ├── .gitignore
 └── README.md
-
+```
 
 ## 🚀 Getting Started
 

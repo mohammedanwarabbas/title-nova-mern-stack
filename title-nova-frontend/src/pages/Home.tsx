@@ -1,3 +1,4 @@
+// src/pages/Home.tsx
 import React, { useState, useEffect, useRef } from "react";
 import theme from '../assets/styles/theme'
 import {
@@ -22,7 +23,8 @@ import {
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../redux/store";
-import { setTitle, setLoading, setError } from "../redux/slices/titleSlice";
+import { setTitle, setLoading, setError, clearTitle, setCountdown } from "../redux/slices/titleSlice";
+import { saveCountdownToSessionStorage, loadCountdownFromSessionStorage } from "../redux/thunks/titleThunks";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
@@ -34,7 +36,7 @@ const Home: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
     const { title, loading } = useSelector((state: RootState) => state.title);
     const [inputText, setInputText] = useState("");
-    const [countdown, setCountdown] = useState(0);
+    const countdown = useSelector((state: RootState) => state.title.countdown);
     const [expandedStory, setExpandedStory] = useState<number | null>(null);
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [titleAnimation, setTitleAnimation] = useState(false);
@@ -74,10 +76,20 @@ const Home: React.FC = () => {
             });
             dispatch(setTitle(res.data.headline));
             toast.success("Title generated!");
-            setCountdown(30);
-        } catch (err: any) {
-            dispatch(setError(err.message));
-            toast.error(err.response?.data?.errorMessage || err.message);
+            dispatch(setCountdown(30));
+            dispatch(saveCountdownToSessionStorage(30));
+        } catch (err: unknown) {
+            // Check if it's an Axios error
+            if (axios.isAxiosError(err)) {
+                // Now TypeScript knows this is an AxiosError
+                dispatch(setError(err.message));
+                toast.error(err.response?.data?.errorMessage || err.message);
+            } else {
+                // Handle regular JavaScript errors
+                const error = err as Error;
+                dispatch(setError(error.message));
+                toast.error(error.message);
+            }
         } finally {
             dispatch(setLoading(false));
         }
@@ -96,14 +108,20 @@ const Home: React.FC = () => {
         }
     };
 
-
+    //for countdown timer
     useEffect(() => {
         if (countdown > 0) {
-            const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+            const timer = setTimeout(() => dispatch(setCountdown(countdown - 1)), 1000);
             return () => clearTimeout(timer);
         }
-    }, [countdown]);
+    }, [countdown,dispatch]);
 
+    // Load countdown from session storage on mount
+    useEffect(() => {
+        dispatch(loadCountdownFromSessionStorage());
+    }, [dispatch]);
+
+    // for title animation
     useEffect(() => {
         if (title && title !== prevTitleRef.current) {
             setTitleAnimation(true);
@@ -112,6 +130,13 @@ const Home: React.FC = () => {
             return () => clearTimeout(timer);
         }
     }, [title]);
+
+    // clean up function
+    useEffect(() => {
+
+        return () => { dispatch(clearTitle()) }
+    },
+        [dispatch])
 
     return (
         <ThemeProvider theme={theme}>
@@ -400,7 +425,7 @@ const Home: React.FC = () => {
                                     </Typography>
                                     <Grid container spacing={2}>
                                         {predefinedStories.map((story, idx) => (
-                                            <Grid item xs={12} key={idx}>
+                                            <Grid size={{ xs: 12 }} key={idx}>
                                                 <Card
                                                     sx={{
                                                         background: 'rgba(255, 255, 255, 0.03)',

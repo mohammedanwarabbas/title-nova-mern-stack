@@ -1,8 +1,8 @@
 import React from "react";
-import { 
-  Box, 
-  Typography, 
-  Grid, 
+import {
+  Box,
+  Typography,
+  Grid,
   Paper,
   Container
 } from "@mui/material";
@@ -61,8 +61,8 @@ const About: React.FC = () => {
   };
 
   return (
-    <Box sx={{ 
-      minHeight: "100vh", 
+    <Box sx={{
+      minHeight: "100vh",
       background: "linear-gradient(135deg, #1a1c24 0%, #232734 50%, #2c2f3a 100%)",
       py: 8,
     }}>
@@ -72,12 +72,12 @@ const About: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <Typography 
-            variant="h2" 
-            align="center" 
-            gutterBottom 
-            sx={{ 
-              fontWeight: "bold", 
+          <Typography
+            variant="h2"
+            align="center"
+            gutterBottom
+            sx={{
+              fontWeight: "bold",
               color: "primary.main",
               mb: 2,
               background: "linear-gradient(45deg, #ffd166 30%, #ef476f 90%)",
@@ -88,19 +88,30 @@ const About: React.FC = () => {
           >
             About Title Nova
           </Typography>
-          
-          <Typography 
-            variant="h6" 
-            align="center" 
-            sx={{ 
-              color: "text.secondary", 
-              mb: 6,
+
+          <Typography
+            variant="h6"
+            align="center"
+            sx={{
+              color: "text.secondary",
+              mb: 2,
               maxWidth: 800,
               mx: "auto"
             }}
           >
-            An <b>AI-powered</b> Title generator that transforms your content into captivating titles. 
+            An <b>AI-powered</b> Title generator that transforms your content into captivating titles.
             Built with cutting-edge technologies for a seamless user experience.
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "primary.light",
+              fontStyle: "italic",
+              textAlign: "center",
+              mb: 4
+            }}
+          >
+            Developed with ❤️ by Anwar
           </Typography>
         </motion.div>
 
@@ -109,10 +120,10 @@ const About: React.FC = () => {
           initial="hidden"
           animate="visible"
         >
-          <Paper 
+          <Paper
             elevation={0}
-            sx={{ 
-              p: 4, 
+            sx={{
+              p: 4,
               mb: 6,
               background: "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(10px)",
@@ -120,10 +131,10 @@ const About: React.FC = () => {
               borderRadius: 1
             }}
           >
-            <Typography 
-              variant="h5" 
-              gutterBottom 
-              sx={{ 
+            <Typography
+              variant="h5"
+              gutterBottom
+              sx={{
                 color: "primary.main",
                 mb: 3,
                 display: "flex",
@@ -131,56 +142,56 @@ const About: React.FC = () => {
                 gap: 2
               }}
             >
-              <FaServer style={{ fontSize: '4rem' }}/> Built With Modern Tech Stack
+              <FaServer style={{ fontSize: '3rem' }} /> Built With Modern Tech Stack
             </Typography>
-            
+
             <Grid container spacing={3} justifyContent={'center'}>
-  {technologies.map((tech) => (
-    <Grid item xs={6} sm={4} md={3} key={tech.name} sx={{ display: 'flex' }}>
-      <motion.div
-        variants={itemVariants}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        style={{ width: '100%' }}
-      >
-        <Paper
-          sx={{
-            p: 3,
-            textAlign: "center",
-            background: "rgba(255, 255, 255, 0.02)",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            borderRadius: 1,
-            transition: "all 0.3s ease",
-            minHeight: 140, // Fixed height
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%", // Full width of grid item
-            "&:hover": {
-              borderColor: tech.color,
-              boxShadow: `0 0 20px ${tech.color}40`
-            }
-          }}
-        >
-          <Box sx={{ mb: 2, flexShrink: 0 }}>
-            {tech.icon}
-          </Box>
-          <Typography 
-            variant="body1" 
-            sx={{ 
-              fontWeight: "medium",
-              color: "text.primary",
-              flexShrink: 0
-            }}
-          >
-            {tech.name}
-          </Typography>
-        </Paper>
-      </motion.div>
-    </Grid>
-  ))}
-</Grid>
+              {technologies.map((tech) => (
+                <Grid size={{ xs: 6, sm: 4, md: 3 }} key={tech.name} sx={{ display: 'flex' }}>
+                  <motion.div
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ width: '100%' }}
+                  >
+                    <Paper
+                      sx={{
+                        p: 3,
+                        textAlign: "center",
+                        background: "rgba(255, 255, 255, 0.02)",
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        borderRadius: 1,
+                        transition: "all 0.3s ease",
+                        minHeight: 140, // Fixed height
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "100%", // Full width of grid item
+                        "&:hover": {
+                          borderColor: tech.color,
+                          boxShadow: `0 0 20px ${tech.color}40`
+                        }
+                      }}
+                    >
+                      <Box sx={{ mb: 2, flexShrink: 0 }}>
+                        {tech.icon}
+                      </Box>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontWeight: "medium",
+                          color: "text.primary",
+                          flexShrink: 0
+                        }}
+                      >
+                        {tech.name}
+                      </Typography>
+                    </Paper>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
           </Paper>
         </motion.div>
 
@@ -189,9 +200,9 @@ const About: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          <Paper 
+          <Paper
             elevation={0}
-            sx={{ 
+            sx={{
               p: 4,
               background: "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(10px)",
@@ -199,10 +210,10 @@ const About: React.FC = () => {
               borderRadius: 1
             }}
           >
-            <Typography 
-              variant="h5" 
-              gutterBottom 
-              sx={{ 
+            <Typography
+              variant="h5"
+              gutterBottom
+              sx={{
                 color: "primary.main",
                 mb: 3
               }}
@@ -210,17 +221,17 @@ const About: React.FC = () => {
               🚀 Frontend Power
             </Typography>
             <Typography variant="body1" sx={{ color: "text.secondary", mb: 2 }}>
-              <strong>React + TypeScript</strong> with <strong>Vite</strong> for blazing fast development<br/>
-              <strong>Redux Toolkit</strong> for state management<br/>
-              <strong>Material-UI</strong> with custom theme and <strong>SASS</strong> for styling<br/>
-              <strong>Framer Motion</strong> for smooth animations<br/>
+              <strong>React + TypeScript</strong> with <strong>Vite</strong> for blazing fast development<br />
+              <strong>Redux Toolkit</strong> for state management<br />
+              <strong>Material-UI</strong> with custom theme and <strong>SASS</strong> for styling<br />
+              <strong>Framer Motion</strong> for smooth animations<br />
               <strong>Axios</strong> for API communication
             </Typography>
 
-            <Typography 
-              variant="h5" 
-              gutterBottom 
-              sx={{ 
+            <Typography
+              variant="h5"
+              gutterBottom
+              sx={{
                 color: "primary.main",
                 mt: 4,
                 mb: 3
@@ -229,39 +240,15 @@ const About: React.FC = () => {
               ⚡ Backend Strength
             </Typography>
             <Typography variant="body1" sx={{ color: "text.secondary", mb: 2 }}>
-              <strong>Node.js + Express.js</strong> server<br/>
-              <strong>NLP Cloud API</strong> integration for AI headline generation<br/>
-              Multiple API key rotation system<br/>
+              <strong>Node.js + Express.js</strong> server<br />
+              <strong>NLP Cloud API</strong> integration for AI headline generation<br />
+              Multiple API key rotation system<br />
               CORS enabled for cross-origin requests
             </Typography>
           </Paper>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          style={{ textAlign: "center", marginTop: 40 }}
-        >
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              color: "primary.light",
-              fontStyle: "italic"
-            }}
-          >
-            Developed with ❤️ by Anwar
-          </Typography>
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              color: "text.secondary",
-              mt: 1
-            }}
-          >
-            Crafting digital experiences that matter
-          </Typography>
-        </motion.div>
+
       </Container>
     </Box>
   );

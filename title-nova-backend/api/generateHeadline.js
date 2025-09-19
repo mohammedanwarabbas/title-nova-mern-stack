@@ -5,6 +5,8 @@ const NLP_CLOUD_KEYS = [
     process.env.NLP_CLOUD_KEY_2,
     process.env.NLP_CLOUD_KEY_3,
     process.env.NLP_CLOUD_KEY_4,
+    process.env.NLP_CLOUD_KEY_5,
+    process.env.NLP_CLOUD_KEY_6,
 ];
 const MAX_RETRIES = NLP_CLOUD_KEYS.length;
 const NLP_CLOUD_API_HEADLINE_GENERATOR_URL = 'https://api.nlpcloud.io/v1/t5-base-en-generate-headline/summarization';

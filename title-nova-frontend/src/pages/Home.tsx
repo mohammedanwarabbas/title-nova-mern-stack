@@ -32,6 +32,8 @@ import { API_BASE_URL } from "./../../config"
 import { RocketLaunch, ContentCopy, AutoAwesome, Star, ExpandMore, ExpandLess, HighlightOff } from "@mui/icons-material";
 import { grey } from '@mui/material/colors';
 
+const TOTAL_COUNTDOWN_DURATION = 60; // Total countdown duration in seconds
+
 const Home: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
     const { title, loading } = useSelector((state: RootState) => state.title);
@@ -76,8 +78,8 @@ const Home: React.FC = () => {
             });
             dispatch(setTitle(res.data.headline));
             toast.success("Title generated!");
-            dispatch(setCountdown(30));
-            dispatch(saveCountdownToSessionStorage(30));
+            dispatch(setCountdown(TOTAL_COUNTDOWN_DURATION));
+            dispatch(saveCountdownToSessionStorage(TOTAL_COUNTDOWN_DURATION));
         } catch (err: unknown) {
             // Check if it's an Axios error
             if (axios.isAxiosError(err)) {
